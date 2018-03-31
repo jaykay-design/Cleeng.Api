@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{FE081F87-C95F-4722-ABDB-F5CCF0172CB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{98568EB2-BB4D-4E61-9D9C-03D90B2CA84A}"
+	ProjectSection(SolutionItems) = preProject
+		..\LICENSE.MD = ..\LICENSE.MD
+		..\README.MD = ..\README.MD
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE081F87-C95F-4722-ABDB-F5CCF0172CB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE081F87-C95F-4722-ABDB-F5CCF0172CB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE081F87-C95F-4722-ABDB-F5CCF0172CB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE081F87-C95F-4722-ABDB-F5CCF0172CB7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {235DE0A5-F01A-4961-AB18-8B30AA304AEB}
+	EndGlobalSection
+EndGlobal
