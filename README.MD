@@ -12,11 +12,6 @@ Each Cleeng API call has its own request class which expects the required parame
 Once the class is instantanited call the ExecuteAsync method.
 
 ```C#
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-
 namespace MyApp
 {
     using Cleeng.Api.Models;
