@@ -1,6 +1,8 @@
 namespace Cleeng.Api.Models
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+    using System;
     using System.Collections.Generic;
 
     public class EventOfferData : BaseOfferDataForRequests, IRequestMessage
@@ -12,9 +14,11 @@ namespace Cleeng.Api.Models
         [JsonProperty("playerCodeHead")]
         public string PlayerCodeHead { get; set; }
         [JsonProperty("startTime")]
-        public long StartTime { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime StartTime { get; set; }
         [JsonProperty("endTime")]
-        public long EndTime { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime EndTime { get; set; }
         [JsonProperty("timeZone")]
         public string TimeZone { get; set; }
         [JsonProperty("videoId")]

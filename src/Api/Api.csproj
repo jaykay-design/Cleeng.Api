@@ -11,6 +11,13 @@
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <PackageTags>.NET Cleeng API</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/jaykay-design/Cleeng.Api</PackageProjectUrl>
+    <RepositoryUrl></RepositoryUrl>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>- Fixed Sandbox URL
+- Converted EventOfferData.StartTime and EventOfferData.EndTime to DateTime type</PackageReleaseNotes>
+    <FileVersion>1.0.1.0</FileVersion>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
