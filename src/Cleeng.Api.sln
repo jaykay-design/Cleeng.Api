@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{98568EB2-BB4D-4E61-9D9C-03D90B2CA84A}"
 	ProjectSection(SolutionItems) = preProject
 		..\LICENSE.MD = ..\LICENSE.MD
+		publish to nuget.txt = publish to nuget.txt
 		..\README.MD = ..\README.MD
 	EndProjectSection
 EndProject

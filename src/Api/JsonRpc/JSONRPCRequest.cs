@@ -43,12 +43,18 @@ namespace Cleeng.Api.JsonRpc
                 useSandbox ? JSONRPCUrl.sandboxApiUrl : JSONRPCUrl.liveApiUrl,
                 postContent))
             {
+
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    throw new ApiException("Cleeng API error", ErrorCodes.APIError, response.ReasonPhrase);
+                }
+
                 var responseBody = await response.Content.ReadAsStringAsync();
                 var result = JsonConvert.DeserializeObject<JSONRPCResponse<TResult>>(responseBody);
 
                 if (result.Error != null)
                 {
-                    throw new ApiException(result.Error.Message, result.Error.Code, result.Error.Data);
+                    throw new ApiException(result.Error.Message, (ErrorCodes)result.Error.Code, result.Error.Data);
                 }
 
                 return result.Result;
