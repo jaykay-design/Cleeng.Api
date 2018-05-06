@@ -9,6 +9,13 @@
         public ErrorCodes ErrorCode { get; set; }
         public object ErrorData { get; set; }
 
+        public ApiException(Error apiError)
+            : base(apiError.Message)
+        {
+            this.ErrorCode = (ErrorCodes)apiError.Code;
+            this.ErrorData = apiError.Data;
+        }
+
         public ApiException(string message, ErrorCodes code, object data)
             :base(message)
         {
