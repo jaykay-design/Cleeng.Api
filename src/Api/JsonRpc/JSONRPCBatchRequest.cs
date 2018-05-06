@@ -6,16 +6,29 @@ namespace Cleeng.Api.JsonRpc
     using System.Threading.Tasks;
     using Models;
     using System.Linq;
+    using System;
+    using Newtonsoft.Json.Linq;
 
     public class JSONRPCBatchRequest
     {
-        public List<JSONRPCRequest<IRequestMessage, IResultMessage>> Requests { get; private set; }
-        public List<JSONRPCResponse<IResultMessage>> Responses { get; private set; }
+        private List<object> requests;
+        private List<string> ids;
+        private List<Type> responseTypes;
+
+        /// <summary>
+        /// Received responses in the same order as the requests were added
+        /// </summary>
+        public List<IResultMessage> Responses { get; private set; }
+        public List<Error> Errors { get; private set; }
 
         public JSONRPCBatchRequest(string jsonRpcVersion = "2.0")
         {
-            this.Requests = new List<JSONRPCRequest<IRequestMessage, IResultMessage>>();
-            this.Responses = new List<JSONRPCResponse<IResultMessage>>();
+            this.Responses = new List<IResultMessage>();
+            this.Errors = new List<Error>();
+
+            this.requests = new List<object>();
+            this.ids = new List<string>();
+            this.responseTypes = new List<Type>();
         }
 
         /// <summary>
@@ -24,13 +37,11 @@ namespace Cleeng.Api.JsonRpc
         /// <param name="useSandbox">Set to true if the Cleeng API sandbox must be used</param>
         /// <returns>true if all requests were successfull</returns>
         /// <exception cref="System.Net.Http.HttpRequestException">The request failed due to an underlying issue such as network connectivity, DNS
-        //  failure, server certificate validation or timeout.</exception>
+        ///  failure, server certificate validation or timeout.</exception>
+        /// <exception cref="ApiException"></exception>
         public async Task<bool> ExecuteAsync(bool useSandbox = false)
         {
-            var batch = new BatchRequest();
-            batch.Requests.AddRange(this.Requests);
-
-            var body = JsonConvert.SerializeObject(batch);
+            var body = JsonConvert.SerializeObject(this.requests);
 
             using (var client = new HttpClient())
             using (var postContent = new StringContent(body))
@@ -39,18 +50,35 @@ namespace Cleeng.Api.JsonRpc
                 postContent))
             {
                 var responseBody = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<BatchResponse>(responseBody);
 
-                foreach(var item in result.responses)
+                if (responseBody.StartsWith("{"))
                 {
-                    var baseItem = item.ToObject<JSONRPCMessage>();
-                    var resultType = this.Requests.First(r => r.Id == baseItem.Id).ResultType;
-
-                    this.Responses.Add((JSONRPCResponse<IResultMessage>)item.ToObject(resultType));
+                    var error = JsonConvert.DeserializeObject<Error>(responseBody);
+                    throw new ApiException(error);
                 }
 
-                return !this.Responses.Any(r => r.Error != null);
+                var result = JsonConvert.DeserializeObject<List<JObject>>(responseBody);
+
+                foreach (var item in result)
+                {
+                    var baseItem = item.ToObject<JSONRPCMessage>();
+                    this.Errors.Add(baseItem.Error);
+
+                    var resultType = this.responseTypes[this.ids.IndexOf(baseItem.Id)];
+                    var resultObject = item.SelectToken("result");
+                    this.Responses.Add((IResultMessage)resultObject.ToObject(resultType));
+                }
+
+                return this.Errors.Any(e => e != null);
             }
+        }
+
+        internal void AddToBatch<TResult>(object message, string id)
+            where TResult : IResultMessage
+        {
+            this.requests.Add(message);
+            this.ids.Add(id);
+            this.responseTypes.Add(typeof(TResult));
         }
     }
 }

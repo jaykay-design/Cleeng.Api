@@ -3,7 +3,7 @@ namespace Cleeng.Api.JsonRpc
     using Newtonsoft.Json;
     using System;
 
-    public abstract class JSONRPCMessage
+    public class JSONRPCMessage
     {
         [JsonProperty("jsonrpc")]
         public string JsonRpc { get; set; }

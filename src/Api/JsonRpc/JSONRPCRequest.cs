@@ -60,5 +60,10 @@ namespace Cleeng.Api.JsonRpc
                 return result.Result;
             }
         }
+
+        public void AddToBatch(JSONRPCBatchRequest batch)
+        {
+            batch.AddToBatch<TResult>(this, this.Id);
+        }
     }
 }
