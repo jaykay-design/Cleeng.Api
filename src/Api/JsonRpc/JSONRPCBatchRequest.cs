@@ -16,10 +16,21 @@ namespace Cleeng.Api.JsonRpc
         private List<Type> responseTypes;
 
         /// <summary>
-        /// Received responses in the same order as the requests were added
+        /// Received responses in the same order as the requests were added. Responses with errors are null.
         /// </summary>
         public List<IResultMessage> Responses { get; private set; }
+        /// <summary>
+        /// Received errors in the same order as the requests were added. Responses without errors are null.
+        /// </summary>
         public List<Error> Errors { get; private set; }
+
+        public int TotalRequest
+        {
+            get
+            {
+                return requests.Count;
+            }
+        }
 
         public JSONRPCBatchRequest(string jsonRpcVersion = "2.0")
         {
@@ -62,11 +73,18 @@ namespace Cleeng.Api.JsonRpc
                 foreach (var item in result)
                 {
                     var baseItem = item.ToObject<JSONRPCMessage>();
-                    this.Errors.Add(baseItem.Error);
-
-                    var resultType = this.responseTypes[this.ids.IndexOf(baseItem.Id)];
-                    var resultObject = item.SelectToken("result");
-                    this.Responses.Add((IResultMessage)resultObject.ToObject(resultType));
+                    if (baseItem.Error == null)
+                    {
+                        var resultType = this.responseTypes[this.ids.IndexOf(baseItem.Id)];
+                        var resultObject = item.SelectToken("result");
+                        this.Responses.Add((IResultMessage)resultObject.ToObject(resultType));
+                        this.Errors.Add(null);
+                    }
+                    else
+                    {
+                        this.Errors.Add(baseItem.Error);
+                        this.Responses.Add(null);
+                    }
                 }
 
                 return this.Errors.Any(e => e != null);
