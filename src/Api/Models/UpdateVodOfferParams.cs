@@ -7,6 +7,11 @@ namespace Cleeng.Api.Models
         [JsonProperty("offerIdString")]
         public string OfferIdString { get; set; }
 
+        public UpdateVodOfferParams()
+        {
+
+        }
+
         public UpdateVodOfferParams(string publisherToken, VodOfferData offerData, string offerId)
         {
             this.PublisherToken = publisherToken;

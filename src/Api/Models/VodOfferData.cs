@@ -5,6 +5,29 @@ namespace Cleeng.Api.Models
 
     public class VodOfferData : BaseOfferDataForRequests, IResultMessage
     {
+        public VodOfferData(Vod vod)
+        {
+            this.Description = vod.Description;
+            this.EventAssociation = vod.EventAssociation;
+            this.BackgroundImageUrl = vod.BackgroundImageUrl.Large;
+            this.CreatedAt = vod.CreatedAt;
+            this.GeoRestrictionCountries = vod.GeoRestrictionCountries;
+            this.GeoRestrictionEnabled = vod.GeoRestrictionEnabled;
+            this.GeoRestrictionType = vod.GeoRestrictionType;
+            this.MembershipOnly = vod.MembershipOnly;
+            this.PlayerCode = vod.PlayerCode;
+            this.PlayerCodeHead = vod.PlayerCodeHead;
+            this.Price = vod.Price;
+            this.RentalPeriod = vod.RentalPeriod;
+            this.Runtime = vod.Runtime;
+            this.Tags = vod.Tags;
+            this.Title = vod.Title;
+            this.UpdatedAt = vod.UpdatedAt;
+            this.Url = vod.Url;
+            this.VideoId = vod.VideoId;
+            this.VideoQuality = vod.VideoQuality;
+        }
+
         [JsonProperty("videoId")]
         public string VideoId { get; set; }
         [JsonProperty("playerCode")]
