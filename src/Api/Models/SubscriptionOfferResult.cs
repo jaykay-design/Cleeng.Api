@@ -31,10 +31,10 @@ namespace Cleeng.Api.Models
 
         [JsonProperty("createdAt")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
         [JsonProperty("updatedAt")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("accessToTags")]
         public List<string> AccessToTags;

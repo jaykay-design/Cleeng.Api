@@ -4,7 +4,7 @@ namespace Cleeng.Api.Models
 
     public class UrlResult : IResultMessage
     {
-        [JsonProperty("url")]
+        [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
         public string Url { get; set; }
     }
 }

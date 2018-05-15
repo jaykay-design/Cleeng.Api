@@ -6,9 +6,9 @@ namespace Cleeng.Api.Models
 
     public class RentalData
     {
-        [JsonProperty("exiresAt")]
+        [JsonProperty("exiresAt", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime ExiresAt { get; set; }
+        public DateTime? ExiresAt { get; set; }
 
         public RentalData(DateTime expiresAt)
         {

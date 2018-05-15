@@ -5,46 +5,23 @@ namespace Cleeng.Api.Models
 
     public class VodOfferData : BaseOfferDataForRequests, IResultMessage
     {
-        public VodOfferData(Vod vod)
-        {
-            this.Description = vod.Description;
-            this.EventAssociation = vod.EventAssociation;
-            this.BackgroundImageUrl = vod.BackgroundImageUrl.Large;
-            this.CreatedAt = vod.CreatedAt;
-            this.GeoRestrictionCountries = vod.GeoRestrictionCountries;
-            this.GeoRestrictionEnabled = vod.GeoRestrictionEnabled;
-            this.GeoRestrictionType = vod.GeoRestrictionType;
-            this.MembershipOnly = vod.MembershipOnly;
-            this.PlayerCode = vod.PlayerCode;
-            this.PlayerCodeHead = vod.PlayerCodeHead;
-            this.Price = vod.Price;
-            this.RentalPeriod = vod.RentalPeriod;
-            this.Runtime = vod.Runtime;
-            this.Tags = vod.Tags;
-            this.Title = vod.Title;
-            this.UpdatedAt = vod.UpdatedAt;
-            this.Url = vod.Url;
-            this.VideoId = vod.VideoId;
-            this.VideoQuality = vod.VideoQuality;
-        }
-
-        [JsonProperty("videoId")]
+        [JsonProperty("videoId", NullValueHandling = NullValueHandling.Ignore)]
         public string VideoId { get; set; }
-        [JsonProperty("playerCode")]
+        [JsonProperty("playerCode", NullValueHandling = NullValueHandling.Ignore)]
         public string PlayerCode { get; set; }
-        [JsonProperty("playerCodeHead")]
+        [JsonProperty("playerCodeHead", NullValueHandling = NullValueHandling.Ignore)]
         public string PlayerCodeHead { get; set; }
-        [JsonProperty("rentalPeriod")]
+        [JsonProperty("rentalPeriod", NullValueHandling = NullValueHandling.Ignore)]
         public string RentalPeriod { get; set; }
-        [JsonProperty("runtime")]
+        [JsonProperty("runtime", NullValueHandling = NullValueHandling.Ignore)]
         public string Runtime { get; set; }
-        [JsonProperty("videoQuality")]
+        [JsonProperty("videoQuality", NullValueHandling = NullValueHandling.Ignore)]
         public string VideoQuality { get; set; }
-        [JsonProperty("eventAssociation")]
+        [JsonProperty("eventAssociation", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> EventAssociation { get; set; }
-        [JsonProperty("tags")]
+        [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Tags { get; set; }
-        [JsonProperty("backgroundImageUrl")]
+        [JsonProperty("backgroundImageUrl", NullValueHandling = NullValueHandling.Ignore)]
         public string BackgroundImageUrl { get; set; }
     }
 }

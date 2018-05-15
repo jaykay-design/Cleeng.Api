@@ -32,10 +32,10 @@ namespace Cleeng.Api.Models
         public string PlayerCodeHead { get; set; }
         [JsonProperty("startTime")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
         [JsonProperty("endTime")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
         [JsonProperty("timeZone")]
         public string TimeZone { get; set; }
         [JsonProperty("videoId")]

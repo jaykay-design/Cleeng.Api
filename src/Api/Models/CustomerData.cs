@@ -5,17 +5,17 @@ namespace Cleeng.Api.Models
     public class CustomerData
     {
 
-        [JsonProperty("email")]
+        [JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]
         public string Email { get; set; }
-        [JsonProperty("locale")]
+        [JsonProperty("locale", NullValueHandling = NullValueHandling.Ignore)]
         public string Locale { get; set; }
-        [JsonProperty("currency")]
+        [JsonProperty("currency", NullValueHandling = NullValueHandling.Ignore)]
         public string Currency { get; set; }
-        [JsonProperty("country")]
+        [JsonProperty("country", NullValueHandling = NullValueHandling.Ignore)]
         public string Country { get; set; }
-        [JsonProperty("password")]
+        [JsonProperty("password", NullValueHandling = NullValueHandling.Ignore)]
         public string Password { get; set; }
-        [JsonProperty("facebookId")]
+        [JsonProperty("facebookId", NullValueHandling = NullValueHandling.Ignore)]
         public string FacebookId { get; set; }
 
         public CustomerData()

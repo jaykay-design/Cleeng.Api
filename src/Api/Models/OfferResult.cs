@@ -27,7 +27,7 @@ namespace Cleeng.Api.Models
         public string ContentType { get; set; }
         [JsonProperty("expiresAt")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
         [JsonProperty("period")]
         public string Period { get; set; }
         [JsonProperty("freePeriods")]

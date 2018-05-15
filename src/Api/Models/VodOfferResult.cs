@@ -4,7 +4,7 @@ namespace Cleeng.Api.Models
 
     public class VodOfferResult : IResultMessage
     {
-        [JsonProperty("vod")]
+        [JsonProperty("vod", NullValueHandling = NullValueHandling.Ignore)]
         public Vod Vod { get; set; }
     }
 }

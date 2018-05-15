@@ -12,7 +12,7 @@ namespace Cleeng.Api.Models
         public string Status { get; set; }
         [JsonProperty("expiresAt")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
         [JsonProperty("nextPaymentPrice")]
         public double NextPaymentPrice { get; set; }
         [JsonProperty("nextPaymentCurrency")]

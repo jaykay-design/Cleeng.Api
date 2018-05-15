@@ -6,11 +6,11 @@ namespace Cleeng.Api.Models
 
     public class UpdateCustomerSubscriptionOfferData
     {
-        [JsonProperty("status")]
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status { get; set; }
-        [JsonProperty("expiresAt")]
+        [JsonProperty("expiresAt", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
 
         public UpdateCustomerSubscriptionOfferData(string status, DateTime expiresAt)
         {

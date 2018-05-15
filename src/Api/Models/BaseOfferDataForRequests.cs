@@ -5,7 +5,7 @@ namespace Cleeng.Api.Models
 
     public class BaseOfferDataForRequests : BaseOfferData
     {
-        [JsonProperty("associateEmail")]
+        [JsonProperty("associateEmail", NullValueHandling = NullValueHandling.Ignore)]
         public string AssociateEmail { get; set; }
 
         public BaseOfferDataForRequests()

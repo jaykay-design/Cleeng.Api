@@ -7,33 +7,33 @@ namespace Cleeng.Api.Models
 
     public class VodOffer
     {
-        [JsonProperty("url")]
+        [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
         public string Url { get; set; }
-        [JsonProperty("price")]
+        [JsonProperty("price", NullValueHandling = NullValueHandling.Ignore)]
         public double Price { get; set; }
-        [JsonProperty("createdAt")]
+        [JsonProperty("createdAt", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime CreatedAt { get; set; }
-        [JsonProperty("applicableTaxRate")]
+        public DateTime? CreatedAt { get; set; }
+        [JsonProperty("applicableTaxRate", NullValueHandling = NullValueHandling.Ignore)]
         public double ApplicableTaxRate { get; set; }
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
-        [JsonProperty("background")]
+        [JsonProperty("background", NullValueHandling = NullValueHandling.Ignore)]
         public string Background { get; set; }
-        [JsonProperty("title")]
+        [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public string Title { get; set; }
-        [JsonProperty("tags")]
+        [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Tags { get; set; }
-        [JsonProperty("currency")]
+        [JsonProperty("currency", NullValueHandling = NullValueHandling.Ignore)]
         public string Currency { get; set; }
-        [JsonProperty("updatedAt")]
+        [JsonProperty("updatedAt", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime UpdatedAt { get; set; }
-        [JsonProperty("id")]
+        public DateTime? UpdatedAt { get; set; }
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
-        [JsonProperty("shortUrl")]
+        [JsonProperty("shortUrl", NullValueHandling = NullValueHandling.Ignore)]
         public string ShortUrl { get; set; }
-        [JsonProperty("publisherEmail")]
+        [JsonProperty("publisherEmail", NullValueHandling = NullValueHandling.Ignore)]
         public string PublisherEmail { get; set; }
 
         public VodOffer()

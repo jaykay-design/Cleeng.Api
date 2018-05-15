@@ -7,11 +7,11 @@ namespace Cleeng.Api.Models
     {
         [JsonProperty("videoId")]
         public string VideoId { get; set; }
-        [JsonProperty("contentExternalId")]
+        [JsonProperty("contentExternalId", NullValueHandling = NullValueHandling.Ignore)]
         public string ContentExternalId { get; set; }
-        [JsonProperty("contentExternalData")]
+        [JsonProperty("contentExternalData", NullValueHandling = NullValueHandling.Ignore)]
         public string ContentExternalData { get; set; }
-        [JsonProperty("tags")]
+        [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Tags { get; set; }
     }
 }

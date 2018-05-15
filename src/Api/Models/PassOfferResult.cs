@@ -33,6 +33,6 @@ namespace Cleeng.Api.Models
         public string Period { get; set; }
         [JsonProperty("expiresAt")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
     }
 }

@@ -4,11 +4,11 @@ namespace Cleeng.Api.Models
 
     public class BackgroundImages
     {
-        [JsonProperty("small")]
+        [JsonProperty("small", NullValueHandling = NullValueHandling.Ignore)]
         public string Small { get; set; }
-        [JsonProperty("medium")]
+        [JsonProperty("medium", NullValueHandling = NullValueHandling.Ignore)]
         public string Medium { get; set; }
-        [JsonProperty("Large")]
+        [JsonProperty("Large", NullValueHandling = NullValueHandling.Ignore)]
         public string Large { get; set; }
 
         public BackgroundImages(string small, string medium, string large)

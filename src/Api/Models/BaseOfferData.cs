@@ -7,31 +7,31 @@ namespace Cleeng.Api.Models
 
     public class BaseOfferData
     {
-        [JsonProperty("price")]
+        [JsonProperty("price", NullValueHandling = NullValueHandling.Ignore)]
         public double Price { get; set; }
-        [JsonProperty("url")]
+        [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
         public string Url { get; set; }
 
-        [JsonProperty("title")]
+        [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public string Title { get; set; }
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
 
-        [JsonProperty("geoRestrictionEnabled")]
+        [JsonProperty("geoRestrictionEnabled", NullValueHandling = NullValueHandling.Ignore)]
         public bool GeoRestrictionEnabled { get; set; }
-        [JsonProperty("geoRestrictionType")]
+        [JsonProperty("geoRestrictionType", NullValueHandling = NullValueHandling.Ignore)]
         public string GeoRestrictionType { get; set; }
-        [JsonProperty("geoRestrictionCountries")]
+        [JsonProperty("geoRestrictionCountries", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> GeoRestrictionCountries { get; set; }
 
-        [JsonProperty("membershipOnly")]
+        [JsonProperty("membershipOnly", NullValueHandling = NullValueHandling.Ignore)]
         public bool MembershipOnly { get; set; }
-        [JsonProperty("createdAt")]
+        [JsonProperty("createdAt", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime CreatedAt { get; set; }
-        [JsonProperty("updatedAt")]
+        public DateTime? CreatedAt { get; set; }
+        [JsonProperty("updatedAt", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
     }
 }

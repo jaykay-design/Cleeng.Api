@@ -7,14 +7,14 @@ namespace Cleeng.Api.Models
 
     public class PassOfferData : BaseOfferDataForRequests
     {
-        [JsonProperty("accessToTags")]
+        [JsonProperty("accessToTags", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> AccessToTags { get; set; }
-        [JsonProperty("period")]
+        [JsonProperty("period", NullValueHandling = NullValueHandling.Ignore)]
         public string Period { get; set; }
 
-        [JsonProperty("expiresAt")]
+        [JsonProperty("expiresAt", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
 
         public PassOfferData()
         {

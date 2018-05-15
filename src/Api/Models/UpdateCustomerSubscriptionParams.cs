@@ -4,10 +4,9 @@ namespace Cleeng.Api.Models
 
     public class UpdateCustomerSubscriptionParams:  IRequestMessage
     {
-
         [JsonProperty("publisherToken")]
         public string PublisherToken { get; set; }
-        [JsonProperty("customerEmail")]
+        [JsonProperty("customerEmail", NullValueHandling = NullValueHandling.Ignore)]
         public string CustomerEmail { get; set; }
         [JsonProperty("offerId")]
         public string SubscriptionId { get; set; }

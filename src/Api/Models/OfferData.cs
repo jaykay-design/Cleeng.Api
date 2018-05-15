@@ -5,13 +5,13 @@ namespace Cleeng.Api.Models
 
     public class OfferData : BaseOfferDataForRequests
     {
-        [JsonProperty("period")]
+        [JsonProperty("period", NullValueHandling = NullValueHandling.Ignore)]
         public string Period { get; set; }
-        [JsonProperty("freePeriods")]
+        [JsonProperty("freePeriods", NullValueHandling = NullValueHandling.Ignore)]
         public int FreePeriods { get; set; }
-        [JsonProperty("freeDays")]
+        [JsonProperty("freeDays", NullValueHandling = NullValueHandling.Ignore)]
         public int FreeDays { get; set; }
-        [JsonProperty("accessToTags")]
+        [JsonProperty("accessToTags", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> AccessToTags;
     }
 }

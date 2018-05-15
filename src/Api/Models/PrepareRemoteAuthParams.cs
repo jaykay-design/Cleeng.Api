@@ -8,7 +8,7 @@ namespace Cleeng.Api.Models
         public string PublisherToken { get; set; }
         [JsonProperty("customerData")]
         public CustomerData CustomerData { get; set; }
-        [JsonProperty("flowDescription")]
+        [JsonProperty("flowDescription", NullValueHandling = NullValueHandling.Ignore)]
         public FlowDescription flowDescription { get; set; }
 
         public PrepareRemoteAuthParams()
